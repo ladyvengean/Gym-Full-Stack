@@ -20,6 +20,8 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+
 router.post("/send/mail", async (req, res, next) => {
   const { name, email, message } = req.body;
   console.log("✅ POST /send/mail was hit", req.body);
@@ -51,6 +53,12 @@ router.post("/send/mail", async (req, res, next) => {
 });
 
 app.use(router);
+
+app.get("/", (req, res) => {
+  res.send("API is working!");
+});
+
+
 
 app.listen(process.env.PORT, () => {
   console.log(`Server listening at port ${process.env.PORT}`);
